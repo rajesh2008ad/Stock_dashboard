@@ -21,6 +21,8 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense
+from joblib import Parallel, delayed
+
 
 # Configuration
 tickers = ["AAPL", "MSFT", "GOOGL", "AMZN", "META", "TSLA"]
@@ -91,3 +93,6 @@ def process_ticker(ticker):
 # Run for each ticker
 for t in tickers:
     process_ticker(t)
+
+# Run in parallel
+#Parallel(n_jobs=-1)(delayed(process_ticker)(t) for t in tickers)
