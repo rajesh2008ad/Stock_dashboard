@@ -127,7 +127,7 @@ def index():
         try:
             df = yf.download(t, start=start, end=end, auto_adjust=False)
             if not df.empty and 'Close' in df.columns:
-                df = df.dropna(subset=['Close'])
+                #df = df.dropna(subset=['Close'])
                 df['MA50'] = df['Close'].rolling(window=50).mean()
                 df['MA200'] = df['Close'].rolling(window=200).mean()
 
